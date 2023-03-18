@@ -107,6 +107,8 @@ class Monitor(gym.Wrapper):
             ep_info.update(self.current_reset_info)
             if self.results_writer:
                 self.results_writer.write_row(ep_info)
+            if info is None:
+                info = dict()
             info["episode"] = ep_info
         self.total_steps += 1
         return observation, reward, done, info
